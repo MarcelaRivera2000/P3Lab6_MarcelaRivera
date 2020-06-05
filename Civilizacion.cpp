@@ -1,6 +1,7 @@
 #include "Civilizacion.h"
 #include <string>
 #include <vector>
+#include "Jinete.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ Civilizacion::Civilizacion(string _nombre){
 	casas=2;
 	cuarteles=0;
 	establos=0;
+	habitantes.push_back(Jinete(100));
 	for (int i=0;i<5;i++){
 		Habitante x=Habitante(100);
 		habitantes.push_back(x);

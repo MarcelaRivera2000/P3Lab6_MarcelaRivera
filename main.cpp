@@ -7,6 +7,7 @@
 #include "Jinete.h"
 #include "Arquero.h"
 #include "Caballero.h"
+#include <typeinfo>
 
 using namespace std; 
 using std::cin;
@@ -15,6 +16,8 @@ using std::cout;
 vector <Civilizacion> lista;
 void Jugar();
 void menu();
+void Guerra(int);
+void HoraSiguiente(int);
 
 int main(int argc, char** argv) {
 	while(true){
@@ -118,11 +121,11 @@ void Jugar(){
 				break;
 			}
 			case 8:{
-				
+				 Guerra(posi);
 				break;
 			}
 			case 9:{
-				
+				HoraSiguiente(posi);
 				break;
 			}
 			case 10:{
@@ -135,57 +138,35 @@ void Jugar(){
 	}
 }
 
+void Guerra(int posi){
+	cout<<"--------- ELIJA CON QUE EQUIPO DESEA BATALLAR ---------"<<endl;
+	for(int i=0;i<lista.size();i++){
+		if(i==posi){
+			i++;
+		}else{
+			cout<<i<<"# "<<lista[i].getNombre()<<endl;	
+		}
+	}
+	int enemigo;
+	cin>>enemigo;
+	for(int i=0;i<lista[posi].getLista().size();i++){
+		Habitante ha=lista[posi].getLista()[i];
+		
+		cout<<typeid(ha).name()<<endl;
+		
+		Guerrero hola =dynamic_cast<Guerrero&>(ha);
+		
+		
+		
+	
+	
+	}
+	
+	
+	
+	
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void HoraSiguiente(int posi){
+	
+}
