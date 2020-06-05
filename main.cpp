@@ -3,6 +3,10 @@
 #include <string> 
 #include <vector>
 #include "Civilizacion.h"
+#include "Aldeano.h"
+#include "Jinete.h"
+#include "Arquero.h"
+#include "Caballero.h"
 
 using namespace std; 
 using std::cin;
@@ -53,37 +57,64 @@ void Jugar(){
 	cin>>posi;
 	
 	while(true){
-	cout<<"--------- MENU ---------"<<endl<<"1#Crear aldeano"<<endl<<"2#Crear jinete"<<endl<<"3#Crear arquero"<<endl<<"4#Crear caballero"<<endl<<"5#Construir casa"<<endl<<"6#Construir cuartel"<<endl<<
-	"7#Construir establo"<<endl<<"8#Ir a guerra"<<endl<<"9#Siguiente hora"<<endl<<"10#Salir"<<endl;
+	cout<<"--------- MENU ---------"<<endl<<"1#Crear aldeano"<<endl<<"2#Crear jinete"<<endl<<"3#Crear arquero"<<endl<<"4#Crear caballero"<<endl
+		<<"5#Construir casa"<<endl<<"6#Construir cuartel"<<endl<<"7#Construir establo"<<endl<<"8#Ir a guerra"<<endl<<"9#Siguiente hora"<<endl<<"10#Salir"<<endl;
 	int op;
 	cin>>op;
 		switch(op){
 			case 1:{
-				
+				if ((lista[posi].getCasa()*5) > lista[posi].getLista().size()){
+					Aldeano aldeano =Aldeano(100);
+					lista[posi].getLista().push_back(aldeano);
+					cout<<"Aldeano Creado..."<<endl;
+				}else{
+					cout<<"No tiene suficientes casas..."<<endl;
+				}
 				break;
 			}
 			case 2:{
-				
+				if (lista[posi].getCuartel() > 0){
+					Jinete jinete = Jinete(100);
+					lista[posi].getLista().push_back(jinete);
+					cout<<"Jinete Creado..."<<endl;
+				}else{
+					cout<<"No tiene Establos..."<<endl;
+				}
 				break;
 			}
 			case 3:{
-				
+					if (lista[posi].getCuartel() > 0){
+					Arquero arquero = Arquero(100);
+					lista[posi].getLista().push_back(arquero);
+					cout<<"Arquero Creado..."<<endl;
+				}else{
+					cout<<"No tiene Cuarteles..."<<endl;
+				}
 				break;
 			}
 			case 4:{
-				
+				if (lista[posi].getCuartel() > 0){
+					Caballero caballero = Caballero(100);
+					lista[posi].getLista().push_back(caballero);
+					cout<<"Caballero Creado..."<<endl;
+				}else{
+					cout<<"No tiene Cuarteles..."<<endl;
+				}
 				break;
 			}
 			case 5:{
-				
+				lista[posi].setCasa();
+				cout<<"Casa Creada ... ("<<lista[posi].getCasa()<<")"<<endl;
 				break;
 			}
 			case 6:{
-				
+				lista[posi].setCuartel();
+				cout<<"Cuartel Creado ... ("<<lista[posi].getCuartel()<<")"<<endl;
 				break;
 			}
 			case 7:{
-				
+				lista[posi].setEstablo();
+				cout<<"Establo Creado ... ("<<lista[posi].getEstablo()<<")"<<endl;
 				break;
 			}
 			case 8:{
@@ -102,7 +133,59 @@ void Jugar(){
 		}
 		
 	}
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

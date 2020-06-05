@@ -15,13 +15,22 @@ class Civilizacion{
 		int getOro();
 		int getMadera();
 		int getAlimento();
+		int getCasa();
+		int getEstablo();
+		int getCuartel();
+		vector<Habitante> getLista();
+		
+		
 		void setMadera(int);
 		void setAlimento(int);
-		void setOro(int);		
+		void setOro(int);
+		void setCasa();
+		void setEstablo();
+		void setCuartel();		
 	
 	private:
 		string nombre;
-		int madera,oro,alimento,aldeanos,casas,cuarteles,establo;
+		int madera,oro,alimento,aldeanos,casas,cuarteles,establos;
 		vector <Habitante> habitantes;
 };
 
