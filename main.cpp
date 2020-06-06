@@ -7,7 +7,6 @@
 #include "Jinete.h"
 #include "Arquero.h"
 #include "Caballero.h"
-#include <typeinfo>
 
 using namespace std; 
 using std::cin;
@@ -179,15 +178,14 @@ void Guerra(int posi){
 	}
 	
 	for(int i=0;i<lista[enemigo].getLista().size();i++){
-		
 		Habitante* enemigoo=lista[enemigo].getLista()[i];
-		
+		Guerrero* yo = dynamic_cast<Guerrero*>(aux[i]);
 		if(dynamic_cast<Guerrero*>(enemigoo)){
 			Guerrero* enemigoGuerrero =dynamic_cast<Guerrero*>(enemigoo);
-			Habitante* yo = dynamic_cast<Habitante*>(aux[i]);
-			
-			
-		//	enemigoGuerrero->ataque(yo);
+			enemigoGuerrero->ataque(yo);
+			yo->ataque(enemigoGuerrero);
+		}else{
+			yo->ataque(enemigoo);
 		}
 	
 	}
@@ -199,11 +197,10 @@ void Guerra(int posi){
 	cout<<"Cantidad guerreros: "<<aux.size()<<endl;
 }
 
-/*Guerrero* gerrero; 	 	    
-		gerrero = dynamic_cast<Guerrero*>(puntero);*/
 
 void HoraSiguiente(int posi){
 	int alde=0,jine=0,arque=0,caba=0;
+	 
 	for(int i=0;i<lista[posi].getLista().size();i++){
 		Habitante* ha=lista[posi].getLista()[i];			
 		if(dynamic_cast<Aldeano*>(ha)){

@@ -3,11 +3,10 @@
 #include "Guerrero.h"
 #include "Habitante.h"
 
-
 class Caballero : public Guerrero{
 	public:
 		Caballero(int);
-		void ataque(Habitante* h); 
+		void ataque(Habitante*); 
 	private:
 		int Valor_ataque;
 		int _vida;

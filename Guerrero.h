@@ -6,7 +6,7 @@
 class Guerrero : public Habitante{
 	public:
 		Guerrero(int);
-		virtual void ataque();
+		virtual void ataque(Habitante*);
 		
 	private:
 		int Valor_ataque;

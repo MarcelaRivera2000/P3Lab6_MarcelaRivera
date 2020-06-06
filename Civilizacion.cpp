@@ -15,8 +15,6 @@ Civilizacion::Civilizacion(string _nombre){
 	casas=2;
 	cuarteles=0;
 	establos=0;
-	
-	
 	for (int i=0;i<5;i++){
 		if(i==0){
 			habitantes.push_back(new Jinete(100));

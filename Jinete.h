@@ -6,7 +6,7 @@
 class Jinete : public Guerrero{
 	public:
 		Jinete(int);
-		void ataque(Habitante*); 
+		void ataque(Habitante* h); 
 	private:
 		int Valor_ataque;
 		int _vida;
