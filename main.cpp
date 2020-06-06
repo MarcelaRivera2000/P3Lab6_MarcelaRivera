@@ -184,10 +184,15 @@ void Guerra(int posi){
 			Guerrero* enemigoGuerrero =dynamic_cast<Guerrero*>(enemigoo);
 			enemigoGuerrero->ataque(yo);
 			if(yo->getVida()==0){
-				lista[enemigo].getLista();
+				delete lista[posi].getLista()[i];
+				lista[posi].getLista().erase(lista[posi].getLista().begin() + i );
 			}
 			
 			yo->ataque(enemigoGuerrero);
+			if(yo->getVida()==0){
+				delete lista[enemigo].getLista()[i];
+				lista[enemigo].getLista().erase(lista[enemigo].getLista().begin() + i );
+			}
 		}else{
 			yo->ataque(enemigoo);
 		}
