@@ -183,6 +183,10 @@ void Guerra(int posi){
 		if(dynamic_cast<Guerrero*>(enemigoo)){
 			Guerrero* enemigoGuerrero =dynamic_cast<Guerrero*>(enemigoo);
 			enemigoGuerrero->ataque(yo);
+			if(yo->getVida()==0){
+				lista[enemigo].getLista();
+			}
+			
 			yo->ataque(enemigoGuerrero);
 		}else{
 			yo->ataque(enemigoo);
