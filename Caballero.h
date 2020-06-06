@@ -1,14 +1,16 @@
 #ifndef CABALLERO_H
 #define CABALLERO_H
 #include "Guerrero.h"
+#include "Habitante.h"
 
 
 class Caballero : public Guerrero{
 	public:
 		Caballero(int);
-		void ataque(); 
+		void ataque(Habitante* h); 
 	private:
 		int Valor_ataque;
+		int _vida;
 };
 
 

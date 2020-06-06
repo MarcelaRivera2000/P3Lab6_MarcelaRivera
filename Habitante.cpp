@@ -11,3 +11,6 @@ int Habitante::getVida(){
 void Habitante::setVida(int x){
 	vida=vida-x;
 }
+
+Habitante::~Habitante(){
+}

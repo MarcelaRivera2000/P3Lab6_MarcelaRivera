@@ -18,9 +18,9 @@ class Civilizacion{
 		int getCasa();
 		int getEstablo();
 		int getCuartel();
-		vector<Habitante> getLista();
+		vector<Habitante*> getLista();
 		
-		
+		void setAldeano(Habitante* x);
 		void setMadera(int);
 		void setAlimento(int);
 		void setOro(int);
@@ -30,8 +30,8 @@ class Civilizacion{
 	
 	private:
 		string nombre;
-		int madera,oro,alimento,aldeanos,casas,cuarteles,establos;
-		vector <Habitante> habitantes;
+		int madera=0,oro=0,alimento=0,aldeanos=0,casas=0,cuarteles=0,establos=0;
+		vector <Habitante*> habitantes;
 };
 
 

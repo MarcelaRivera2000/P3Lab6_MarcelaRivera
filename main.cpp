@@ -18,6 +18,7 @@ void Jugar();
 void menu();
 void Guerra(int);
 void HoraSiguiente(int);
+int global=0;
 
 int main(int argc, char** argv) {
 	while(true){
@@ -41,6 +42,7 @@ int op;
 				break;
 			}
 			case 2:{
+				global=0;
 				Jugar();
 				break;
 			}
@@ -67,8 +69,8 @@ void Jugar(){
 		switch(op){
 			case 1:{
 				if ((lista[posi].getCasa()*5) > lista[posi].getLista().size()){
-					Aldeano aldeano =Aldeano(100);
-					lista[posi].getLista().push_back(aldeano);
+					Aldeano* aldeano =new Aldeano(100);
+					lista[posi].setAldeano(aldeano);
 					cout<<"Aldeano Creado..."<<endl;
 				}else{
 					cout<<"No tiene suficientes casas..."<<endl;
@@ -76,9 +78,9 @@ void Jugar(){
 				break;
 			}
 			case 2:{
-				if (lista[posi].getCuartel() > 0){
-					Jinete jinete = Jinete(100);
-					lista[posi].getLista().push_back(jinete);
+				if (lista[posi].getEstablo() > 0){
+					Jinete* jinete = new Jinete(100);
+					lista[posi].setAldeano(jinete);
 					cout<<"Jinete Creado..."<<endl;
 				}else{
 					cout<<"No tiene Establos..."<<endl;
@@ -87,8 +89,8 @@ void Jugar(){
 			}
 			case 3:{
 					if (lista[posi].getCuartel() > 0){
-					Arquero arquero = Arquero(100);
-					lista[posi].getLista().push_back(arquero);
+					Arquero* arquero =new  Arquero(100);
+					lista[posi].setAldeano(arquero);
 					cout<<"Arquero Creado..."<<endl;
 				}else{
 					cout<<"No tiene Cuarteles..."<<endl;
@@ -97,8 +99,8 @@ void Jugar(){
 			}
 			case 4:{
 				if (lista[posi].getCuartel() > 0){
-					Caballero caballero = Caballero(100);
-					lista[posi].getLista().push_back(caballero);
+					Caballero* caballero =new Caballero(100);
+					lista[posi].setAldeano(caballero);
 					cout<<"Caballero Creado..."<<endl;
 				}else{
 					cout<<"No tiene Cuarteles..."<<endl;
@@ -106,18 +108,35 @@ void Jugar(){
 				break;
 			}
 			case 5:{
-				lista[posi].setCasa();
-				cout<<"Casa Creada ... ("<<lista[posi].getCasa()<<")"<<endl;
+				
+				if(lista[posi].getMadera()>=50){
+					lista[posi].setCasa();	
+					cout<<"Casa Creada ... ("<<lista[posi].getCasa()<<")"<<endl;	
+				}else{
+					cout<<"No hay suficiente madera..."<<endl;
+				}
+				
 				break;
 			}
 			case 6:{
-				lista[posi].setCuartel();
-				cout<<"Cuartel Creado ... ("<<lista[posi].getCuartel()<<")"<<endl;
+				if(lista[posi].getMadera()>=200 && lista[posi].getOro()>=50){
+					lista[posi].setCuartel();
+					cout<<"Cuartel Creado ... ("<<lista[posi].getCuartel()<<")"<<endl;	
+				}else{
+					cout<<"No hay sufientes materiales... "<<endl;
+				}
+				
+				
 				break;
 			}
 			case 7:{
-				lista[posi].setEstablo();
-				cout<<"Establo Creado ... ("<<lista[posi].getEstablo()<<")"<<endl;
+				if(lista[posi].getMadera()>=150 && lista[posi].getOro()>=50){
+					lista[posi].setEstablo();
+					cout<<"Establo Creado ... ("<<lista[posi].getEstablo()<<")"<<endl;
+				}else{
+					cout<<"No hay sufientes materiales... "<<endl;
+				}
+				
 				break;
 			}
 			case 8:{
@@ -126,6 +145,7 @@ void Jugar(){
 			}
 			case 9:{
 				HoraSiguiente(posi);
+				global++;
 				break;
 			}
 			case 10:{
@@ -149,24 +169,98 @@ void Guerra(int posi){
 	}
 	int enemigo;
 	cin>>enemigo;
+	vector<Guerrero*> aux;
 	for(int i=0;i<lista[posi].getLista().size();i++){
-		Habitante ha=lista[posi].getLista()[i];
-		
-		cout<<typeid(ha).name()<<endl;
-		
-		Guerrero hola =dynamic_cast<Guerrero&>(ha);
-		
-		
-		
-	
-	
+		Habitante* ha=lista[posi].getLista()[i];			
+		if(dynamic_cast<Guerrero*>(ha)){
+			Guerrero* h =dynamic_cast<Guerrero*>(ha);
+			aux.push_back(h);
+		}
 	}
 	
+	for(int i=0;i<lista[enemigo].getLista().size();i++){
+		
+		Habitante* enemigoo=lista[enemigo].getLista()[i];
+		
+		if(dynamic_cast<Guerrero*>(enemigoo)){
+			Guerrero* enemigoGuerrero =dynamic_cast<Guerrero*>(enemigoo);
+			Habitante* yo = dynamic_cast<Habitante*>(aux[i]);
+			
+			
+		//	enemigoGuerrero->ataque(yo);
+		}
+	
+	}
+
 	
 	
 	
+	
+	cout<<"Cantidad guerreros: "<<aux.size()<<endl;
 }
 
+/*Guerrero* gerrero; 	 	    
+		gerrero = dynamic_cast<Guerrero*>(puntero);*/
+
 void HoraSiguiente(int posi){
+	int alde=0,jine=0,arque=0,caba=0;
+	for(int i=0;i<lista[posi].getLista().size();i++){
+		Habitante* ha=lista[posi].getLista()[i];			
+		if(dynamic_cast<Aldeano*>(ha)){
+			cout<<"aldeano"<<endl;
+			alde++;
+		}
+		if(dynamic_cast<Jinete*>(ha)){
+			cout<<"jinete"<<endl;
+			jine++;
+		}
+		if(dynamic_cast<Caballero*>(ha)){
+			cout<<"caba"<<endl;
+			caba++;
+		}
+		if(dynamic_cast<Arquero*>(ha)){
+		cout<<"arquero"<<endl;
+			arque++;
+		}
+	}	
 	
+	lista[posi].setAlimento(25*alde);
+	if(global%6==0){
+		lista[posi].setMadera(5*jine);
+		lista[posi].setOro(10*jine);
+		lista[posi].setAlimento(50*jine);
+	}
+	if(global%4==0){
+		lista[posi].setMadera(10*arque);
+		lista[posi].setOro(10*arque);
+		lista[posi].setAlimento(50*arque);
+		lista[posi].setMadera(5*caba);
+		lista[posi].setOro(15*caba);
+		lista[posi].setAlimento(50*caba);
+	}
+	cout<<"--------- RESUMEN ---------"<<endl<<"Madera: "<<lista[posi].getMadera()<<endl<<"Oro: "<<lista[posi].getOro()<<endl<<"Alimentos: "<<lista[posi].getAlimento()<<
+	endl<<"Aldeanos: "<<alde<<endl<<"Jinetes: "<<jine<<endl<<"Caballeros: "<<caba<<endl<<"Arqueros: "<<arque<<endl<<"Capacidad de habitantes Actual:"<<lista[posi].getCasa()*5<<endl;	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ class Habitante{
 		Habitante(int);
 		int getVida();
 		void setVida(int x);
+		virtual ~Habitante();
 	private:
 		int vida;
 	

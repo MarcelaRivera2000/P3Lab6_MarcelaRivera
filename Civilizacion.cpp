@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Jinete.h"
+#include "Aldeano.h"
 
 using namespace std;
 
@@ -14,9 +15,13 @@ Civilizacion::Civilizacion(string _nombre){
 	casas=2;
 	cuarteles=0;
 	establos=0;
-	habitantes.push_back(Jinete(100));
+	
+	
 	for (int i=0;i<5;i++){
-		Habitante x=Habitante(100);
+		if(i==0){
+			habitantes.push_back(new Jinete(100));
+		}
+		Aldeano* x=new Aldeano(100);
 		habitantes.push_back(x);
 	}
 }
@@ -49,7 +54,7 @@ int Civilizacion::getEstablo(){
 	return establos;
 }
 
-vector<Habitante> Civilizacion::getLista(){
+vector<Habitante*> Civilizacion::getLista(){
 	return habitantes;
 }
 
@@ -76,6 +81,10 @@ void Civilizacion::setCuartel(){
 
 void Civilizacion::setEstablo(){
 	establos++;
+}
+
+void Civilizacion::setAldeano(Habitante* x){
+	habitantes.push_back(x);
 }
 
 

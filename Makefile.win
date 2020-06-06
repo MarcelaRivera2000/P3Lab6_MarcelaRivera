@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Aldeano.o Arquero.o Caballero.o Civilizacion.o Gerrero.o Habitante.o Jinete.o main.o
-LINKOBJ  = Aldeano.o Arquero.o Caballero.o Civilizacion.o Gerrero.o Habitante.o Jinete.o main.o
+OBJ      = Aldeano.o Arquero.o Caballero.o Civilizacion.o Guerrero.o Habitante.o Jinete.o main.o
+LINKOBJ  = Aldeano.o Arquero.o Caballero.o Civilizacion.o Guerrero.o Habitante.o Jinete.o main.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -36,8 +36,8 @@ Caballero.o: Caballero.cpp
 Civilizacion.o: Civilizacion.cpp
 	$(CPP) -c Civilizacion.cpp -o Civilizacion.o $(CXXFLAGS)
 
-Gerrero.o: Gerrero.cpp
-	$(CPP) -c Gerrero.cpp -o Gerrero.o $(CXXFLAGS)
+Guerrero.o: Guerrero.cpp
+	$(CPP) -c Guerrero.cpp -o Guerrero.o $(CXXFLAGS)
 
 Habitante.o: Habitante.cpp
 	$(CPP) -c Habitante.cpp -o Habitante.o $(CXXFLAGS)
